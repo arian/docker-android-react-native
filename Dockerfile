@@ -42,6 +42,7 @@ RUN opt/tools/android-accept-licenses.sh "$ANDROID_HOME/tools/bin/sdkmanager \
         \"build-tools;23.0.1\" \
         \"build-tools;23.0.3\" \
         \"build-tools;25.0.1\" \
+        \"build-tools;25.0.2\" \
         \"platforms;android-23\" \
         \"platforms;android-25\" \
         \"extras;android;m2repository\" \
