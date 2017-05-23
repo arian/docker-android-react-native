@@ -16,6 +16,14 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
     apt-get update && apt-get install -y yarn
 
+ENV GRADLE_VERSION 3.3
+ENV GRADLE_SDK_URL https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip
+RUN curl -sSL "${GRADLE_SDK_URL}" -o gradle-${GRADLE_VERSION}-bin.zip  \
+    && unzip gradle-${GRADLE_VERSION}-bin.zip -d ${SDK_HOME}  \
+    && rm -rf gradle-${GRADLE_VERSION}-bin.zip
+ENV GRADLE_HOME ${SDK_HOME}/gradle-${GRADLE_VERSION}
+ENV PATH ${GRADLE_HOME}/bin:$PATH
+
 # copy tools folder
 COPY tools /opt/tools
 ENV PATH ${PATH}:/opt/tools
