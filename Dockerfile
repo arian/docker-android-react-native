@@ -19,9 +19,9 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
 ENV GRADLE_VERSION 3.3
 ENV GRADLE_SDK_URL https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip
 RUN curl -sSL "${GRADLE_SDK_URL}" -o gradle-${GRADLE_VERSION}-bin.zip  \
-    && unzip gradle-${GRADLE_VERSION}-bin.zip -d ${SDK_HOME}  \
+    && unzip gradle-${GRADLE_VERSION}-bin.zip -d /usr/local  \
     && rm -rf gradle-${GRADLE_VERSION}-bin.zip
-ENV GRADLE_HOME ${SDK_HOME}/gradle-${GRADLE_VERSION}
+ENV GRADLE_HOME /usr/local/gradle-${GRADLE_VERSION}
 ENV PATH ${GRADLE_HOME}/bin:$PATH
 
 # copy tools folder
